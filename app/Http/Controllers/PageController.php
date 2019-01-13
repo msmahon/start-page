@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace StartPage\Http\Controllers;
 
-use App\Page;
+use StartPage\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -43,7 +44,7 @@ class PageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Page  $page
+     * @param  \StartPage\Page  $page
      * @return \Illuminate\Http\Response
      */
     public function show(Page $page)
@@ -54,7 +55,7 @@ class PageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Page  $page
+     * @param  \StartPage\Page  $page
      * @return \Illuminate\Http\Response
      */
     public function edit(Page $page)
@@ -66,7 +67,7 @@ class PageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Page  $page
+     * @param  \StartPage\Page  $page
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Page $page)
@@ -77,7 +78,7 @@ class PageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Page  $page
+     * @param  \StartPage\Page  $page
      * @return \Illuminate\Http\Response
      */
     public function destroy(Page $page)
