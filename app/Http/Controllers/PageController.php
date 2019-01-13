@@ -14,7 +14,9 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
+        $pages = Page::where('user_id', Auth::id())->get();
+
+        return view('my-pages')->with(compact('pages'));
     }
 
     /**
