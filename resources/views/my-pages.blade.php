@@ -3,13 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <ul>
-                @foreach ($pages as $page)
-                    <li>{{ $page->name }}</li>
-                @endforeach
-            </ul>
-        </div>
+        @foreach ($pages as $page)
+            <div class="col-md-4">
+                <page-card :data="{{$page}}"></page-card>
+            </div>
+        @endforeach
     </div>
 </div>
 @endsection

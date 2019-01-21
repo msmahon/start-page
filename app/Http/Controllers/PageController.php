@@ -81,8 +81,19 @@ class PageController extends Controller
      * @param  \StartPage\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Page $page)
+    public function destroy($slug)
+    {        
+        if (Auth::id() == Page::where('slug', $slug)->value('user_id')) {
+            return 'deleted';
+        }
+    }
+
+    public function showPage($slug)
     {
-        //
+        // Create page based on page settings
+        $page = Page::where('slug', $slug)->first();
+        $theme = $page->theme;
+
+        return view("themes/{$theme}");
     }
 }
