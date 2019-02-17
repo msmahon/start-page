@@ -15,8 +15,8 @@ class CreatePagesTable extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('slug')->unique();
+            $table->integer('user_id')->references('id')->on('users');
+            $table->uuid('slug');
             $table->string('name');
             $table->string('theme');
             $table->timestamps();
