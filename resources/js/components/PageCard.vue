@@ -11,7 +11,7 @@
                 <span class="text-dark">{{ data.theme }}</span>
             </p>
 
-            <a :href="viewUrl" class="card-link">View</a>
+            <a :href="viewUrl" class="card-link" target="_blank">View</a>
             <a :href="editUrl" class="card-link">Edit</a>
             <a href="#" class="card-link delete-view" @click="deletePage(data.slug)">Delete</a>
         </div>
