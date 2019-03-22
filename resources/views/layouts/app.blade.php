@@ -34,7 +34,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a href="/my-pages">My Pages</a>
+                            <a href="/pages">My Pages</a>
                         </li>
                     </ul>
 
