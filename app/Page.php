@@ -3,13 +3,17 @@
 namespace StartPage;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User;
 
 class Page extends Model
 {
+    protected $fillable = [
+        'user_id', 'slug', 'name', 'theme'
+    ];
 
     public function user()
     {
-        return $this->belongsTo('StartPage\User');
+        return $this->belongsTo(User::class);
     }
 
     public function getUrl()
