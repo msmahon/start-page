@@ -5,6 +5,7 @@ namespace StartPage\Http\Controllers;
 use StartPage\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PageController extends Controller
 {
@@ -15,80 +16,38 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::where('user_id', Auth::id())->get();
+        $pages = Page::where('user_id', auth()->id())->get();
 
         return view('my-pages')->with(compact('pages'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Store a new page record in the database
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+     * @param Request $request
+     * @return void
+    */
     public function store(Request $request)
     {
-        //
-    }
+        $page = Page::create([
+            'user_id' => auth()->id(),
+            'slug' => Str::uuid(),
+            'name' => request('name'),
+            'theme' => request('theme')
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \StartPage\Page  $page
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Page $page)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \StartPage\Page  $page
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Page $page)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \StartPage\Page  $page
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Page $page)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \StartPage\Page  $page
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($slug)
-    {        
-        if (Auth::id() == Page::where('slug', $slug)->value('user_id')) {
-            return 'deleted';
+        if (request()->wantsJson()) {
+            return response($page, 201);
         }
     }
 
-    public function showPage($slug)
+    /**
+     * Return the view for a page
+     *
+     * @param string $slug
+     * @return void
+     */
+    public function show($slug)
     {
         // Create page based on page settings
         $page = Page::where('slug', $slug)->first();
