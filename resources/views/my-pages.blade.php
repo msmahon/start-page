@@ -2,12 +2,14 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        @foreach ($pages as $page)
-            <div class="col-md-4">
+    <div class="card">
+        <div class="card-header">Your Pages</div>
+        <ul class="list-group list-group-flush">
+            @foreach ($pages as $page)
                 <page-card :data="{{$page}}"></page-card>
-            </div>
-        @endforeach
+            @endforeach
+        </ul>
     </div>
+    <a href="/pages/create" class="ml-3 mt-3" style="display: block;">+ New Page</a>
 </div>
 @endsection

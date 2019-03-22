@@ -1,21 +1,12 @@
 <template>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title" v-text="data.name"></h5>
-
-            <p class="card-text text-muted">Created: 
-                <span class="text-dark">{{ data.created_at | humanDate }}</span>
-            </p>
-
-            <p class="card-text text-muted">Theme: 
-                <span class="text-dark">{{ data.theme }}</span>
-            </p>
-
+    <li class="list-group-item" style="display: flex; justify-content: space-between;">
+        <span v-text="data.name"></span>
+        <span>
             <a :href="viewUrl" class="card-link" target="_blank">View</a>
             <a :href="editUrl" class="card-link">Edit</a>
             <a href="#" class="card-link delete-view" @click="deletePage(data.slug)">Delete</a>
-        </div>
-    </div>
+        </span>
+    </li>
 </template>
 
 <script>
