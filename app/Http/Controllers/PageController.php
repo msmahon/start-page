@@ -36,9 +36,7 @@ class PageController extends Controller
             'theme' => request('theme')
         ]);
 
-        if (request()->wantsJson()) {
-            return response($page, 201);
-        }
+        return redirect('pages');
     }
 
     /**
@@ -54,5 +52,17 @@ class PageController extends Controller
         $theme = $page->theme;
 
         return view("themes/{$theme}");
+    }
+
+    public function create()
+    {
+        return view("create");
+    }
+
+    public function destroy($slug)
+    {
+        $page = Page::where('slug', $slug)->first();
+        $page->delete();
+        
     }
 }
