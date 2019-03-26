@@ -4,6 +4,8 @@ namespace StartPage\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use StartPage\Page;
+use StartPage\Policies\PagePolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -14,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'StartPage\Model' => 'StartPage\Policies\ModelPolicy',
+        Page::class => PagePolicy::class
     ];
 
     /**
