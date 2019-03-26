@@ -6,7 +6,7 @@
         <div class="card-header">Your Pages</div>
         <ul class="list-group list-group-flush">
             @foreach ($pages as $page)
-                <page-card :data="{{$page}}"></page-card>
+                <page-item :data="{{$page}}"></page-item>
             @endforeach
         </ul>
     </div>
