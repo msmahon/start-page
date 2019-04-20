@@ -36,10 +36,10 @@ export default {
 
     computed: {
         viewUrl: function() {
-            return `/page/${this.slug}`
+            return `/pages/${this.slug}`
         },
         editUrl: function() {
-            return `/page/edit/${this.slug}`
+            return `/pages/edit/${this.slug}`
         }
     },
 
