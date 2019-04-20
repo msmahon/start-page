@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Foundation\Auth\User;
+
 
 class UsersTableSeeder extends Seeder
 {
@@ -11,7 +13,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(StartPage\User::class, 20)->create()->each(function ($user) {
+        factory(User::class, 20)->create()->each(function ($user) {
             $user->pages()->saveMany(factory(StartPage\Page::class, rand(1, 3))->make());
         });
     }
